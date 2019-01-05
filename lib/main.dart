@@ -1,6 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  // Desktop platforms are not recognized as valid targets by
+  // Flutter; force a specific target to prevent exceptions.
+  debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
