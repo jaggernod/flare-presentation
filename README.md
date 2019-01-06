@@ -1,8 +1,16 @@
-# flutter_app
+# Flare Presentation
 
-Flare Presentation
+The project's purpose is to share some experience with [Flare by 2D](https://www.2dimensions.com/about-flare)
 
-## Getting Started
+## Setup
+
+As the project uses submodules you need to clone it recursively.
+
+```
+git clone <THIS_PROJECT> --recursive
+```
+
+## Getting Started with Flutter
 
 This project is a starting point for a Flutter application.
 
