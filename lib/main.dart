@@ -46,7 +46,14 @@ class _GrokePageState extends State<GrokePage> {
         backgroundColor: Colors.grey,
         body: Column(
           children: <Widget>[
-            Expanded(child: const Groke()),
+            Expanded(
+              child: FlareActor(
+                'assets/gorke.flr',
+                alignment: Alignment.center,
+                fit: BoxFit.contain,
+                animation: 'HeadTilt',
+              ),
+            ),
           ],
         ));
   }
