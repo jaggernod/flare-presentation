@@ -4,29 +4,49 @@ import 'package:flutter/services.dart';
 import 'package:flutter_app/pager.dart';
 
 void main() {
-  // Desktop platforms are not recognized as valid targets by
-  // Flutter; force a specific target to prevent exceptions.
   debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
 
   SystemChrome.setEnabledSystemUIOverlays([]);
 
-  runApp(MyApp());
+  runApp(PresentationApp());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class PresentationApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flare Presentation',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      title: 'Flutter Presentation',
+      home: Material(child: const Presentation()),
+    );
+  }
+}
+
+class Presentation extends StatelessWidget {
+  const Presentation({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final queryData = MediaQuery.of(context);
+    double devicePixelRatio = queryData.devicePixelRatio;
+
+    return Theme(
+      data: Theme.of(context).copyWith(
         primaryTextTheme: TextTheme(
-          title: TextStyle(color: Colors.white),
+          title: TextStyle(
+            color: Colors.white,
+            fontSize: 100.0 / devicePixelRatio,
+          ),
+          caption: TextStyle(
+            fontSize: 70.0 / devicePixelRatio,
+            fontStyle: FontStyle.italic,
+          ),
+          subhead: TextStyle(
+            fontSize: 70.0 / devicePixelRatio,
+          ),
         ),
       ),
-      home: Material(child: const Pager()),
+      child: Pager(),
     );
   }
 }

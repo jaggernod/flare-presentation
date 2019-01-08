@@ -12,8 +12,6 @@ class Groke extends StatefulWidget {
 
 enum Mood { scare, smile }
 
-const _kRubbingThreshold = 10000;
-
 class _GrokeState extends State<Groke> implements FlareController {
   double _speed = 2.0;
   double _scareFactorAmount = 0.1;
@@ -112,8 +110,10 @@ class RubDetector extends StatefulWidget {
   RubDetectorState createState() => RubDetectorState();
 }
 
+const _kRubbingThreshold = 1000;
+
 class RubDetectorState extends State<RubDetector> {
-  double _initial;
+  Offset _lastPosition;
 
   double _distance;
 
@@ -121,7 +121,6 @@ class RubDetectorState extends State<RubDetector> {
   void initState() {
     super.initState();
 
-    _initial = 0.0;
     _distance = 0.0;
   }
 
@@ -129,19 +128,22 @@ class RubDetectorState extends State<RubDetector> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onPanStart: (DragStartDetails details) {
-        _initial = details.globalPosition.dx;
+        _lastPosition = details.globalPosition;
         _distance = 0;
       },
       onPanUpdate: (DragUpdateDetails details) {
-        double distance = details.globalPosition.dx - _initial;
+        double distance =
+            details.globalPosition.distance - _lastPosition.distance;
         _distance += distance.abs();
+
+        _lastPosition = details.globalPosition;
 
         if (widget.isEnabled && _distance > _kRubbingThreshold) {
           widget.onRubbed();
         }
       },
       onPanEnd: (DragEndDetails details) {
-        _initial = 0.0;
+        _lastPosition = null;
         _distance = 0;
       },
       child: widget.child,

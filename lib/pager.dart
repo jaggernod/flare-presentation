@@ -1,7 +1,7 @@
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/groke.dart';
+import 'package:flutter_app/pages/flare_logo.dart';
+import 'package:flutter_app/pages/groke.dart';
 import 'package:flutter_app/slide.dart';
 
 class Pager extends StatelessWidget {
@@ -9,57 +9,78 @@ class Pager extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final content = [
+      const FlareLogo(),
+      _buildFlutterQuestion(context),
+      const Groke(),
+    ];
+
     return PageView(
-      children: <Widget>[
-        Slide(child: _buildFlareLogo(context)),
-        Slide(child: const Groke()),
-        Slide(child: _buildFlutterQuestion(context)),
-      ],
+      children: content.map((item) => Slide(child: item)).toList(),
     );
   }
 
   Widget _buildFlutterQuestion(BuildContext context) {
-    final queryData = MediaQuery.of(context);
-    double devicePixelRatio = queryData.devicePixelRatio;
-
     return Padding(
       padding: EdgeInsets.all(48.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'What is Flutter?',
-            style: Theme.of(context)
-                .primaryTextTheme
-                .title
-                .copyWith(fontSize: 70 / devicePixelRatio),
+          RichText(
+            text: TextSpan(
+              text: 'What is ',
+              style: Theme.of(context).primaryTextTheme.title,
+              children: <TextSpan>[
+                TextSpan(
+                  text: 'Flare'.toUpperCase(),
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .title
+                      .copyWith(letterSpacing: 5.0),
+                ),
+                TextSpan(
+                  text: '?',
+                  style: Theme.of(context).primaryTextTheme.title,
+                ),
+              ],
+            ),
           ),
           Expanded(
             child: Center(
-              child: Text(
-                '“Flutter is Google’s mobile app SDK for crafting high-quality $devicePixelRatio'
-                    'native interfaces on iOS and Android in record time.'
-                    '\nFlutter works with existing code, is used by developers '
-                    'and organizations around the world, and is free and open source.”',
-                style: Theme.of(context)
-                    .primaryTextTheme
-                    .caption
-                    .copyWith(fontSize: 60 / devicePixelRatio),
+              child: RichText(
+                text: TextSpan(
+                  text: '“Flare offers powerful realtime ',
+                  style: Theme.of(context).primaryTextTheme.caption,
+                  children: [
+                    TextSpan(
+                      text: 'vector',
+                      style: Theme.of(context)
+                          .primaryTextTheme
+                          .caption
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(
+                      text: ' design and animation '
+                          'for app and game designers alike.\nThe primary goal of '
+                          'Flare is to allow designers to work directly with assets '
+                          'that run in their final product, eliminating the need to redo that work in code.”',
+                      style: Theme.of(context).primaryTextTheme.caption,
+                    ),
+                  ],
+                ),
               ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Text(
+              '- 2dimensions.com',
+              style: Theme.of(context).primaryTextTheme.caption,
             ),
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildFlareLogo(BuildContext context) {
-    return FlareActor(
-      'assets/flare_logo.flr',
-      alignment: Alignment.center,
-      fit: BoxFit.contain,
-      animation: 'Build and Fade Out',
     );
   }
 }
