@@ -13,7 +13,7 @@ class Groke extends StatefulWidget {
 enum Mood { scare, smile }
 
 class _GrokeState extends State<Groke> implements FlareController {
-  double _speed = 2.0;
+  final double _speed = 2.0;
   double _scareFactorAmount = 0.1;
   double _scareTime = 0.0;
   double _smileTime = 0.0;
@@ -93,10 +93,6 @@ class _GrokeState extends State<Groke> implements FlareController {
 }
 
 class RubDetector extends StatefulWidget {
-  final Widget child;
-  final bool isEnabled;
-  final VoidCallback onRubbed;
-
   const RubDetector({
     Key key,
     @required this.child,
@@ -105,6 +101,11 @@ class RubDetector extends StatefulWidget {
   })  : assert(child != null),
         assert(onRubbed != null),
         super(key: key);
+
+  final Widget child;
+  final bool isEnabled;
+
+  final VoidCallback onRubbed;
 
   @override
   RubDetectorState createState() => RubDetectorState();

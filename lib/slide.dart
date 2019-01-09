@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class Slide extends StatelessWidget {
-  final Widget child;
-  final List<Color> colors;
-
   const Slide({
     Key key,
     @required this.child,
     this.colors = const [Color(0xFF3079BF), Color(0xFF204E81)],
   }) : super(key: key);
+
+  final Widget child;
+
+  final List<Color> colors;
 
   @override
   Widget build(BuildContext context) {
