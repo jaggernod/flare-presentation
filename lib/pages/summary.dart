@@ -41,11 +41,18 @@ class SummaryState extends State<Summary> {
               FlutterLogo(),
               FlutterLogo(),
               Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(240),
-                  child: Image.asset(
-                    'assets/tomek.jpg',
-                    fit: BoxFit.cover,
+                child: Padding(
+                  padding: const EdgeInsets.all(48.0),
+                  child: LayoutBuilder(
+                    builder: (context, constraints) => ClipRRect(
+                          borderRadius: BorderRadius.circular(
+                            constraints.biggest.longestSide,
+                          ),
+                          child: Image.asset(
+                            'assets/tomek.jpg',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                   ),
                 ),
               )
