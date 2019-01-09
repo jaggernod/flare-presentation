@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/filip.dart';
 import 'package:flutter_app/pages/flare_info.dart';
 import 'package:flutter_app/pages/flare_logo.dart';
 import 'package:flutter_app/pages/groke.dart';
@@ -13,6 +14,7 @@ class Pager extends StatelessWidget {
     final content = [
       const FlareLogo(),
       const FlareInfo(),
+      const Filip(),
       const Groke(),
     ];
 

@@ -7,6 +7,10 @@ void main() {
   debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
 
   SystemChrome.setEnabledSystemUIOverlays([]);
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight,
+  ]);
 
   runApp(PresentationApp());
 }
