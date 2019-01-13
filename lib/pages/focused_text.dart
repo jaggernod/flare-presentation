@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
-class End extends StatelessWidget {
-  const End({Key key}) : super(key: key);
+class FocusedText extends StatelessWidget {
+  const FocusedText({Key key, @required this.text})
+      : assert(text != null),
+        super(key: key);
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'Questions?',
+        text,
         style: Theme.of(context).primaryTextTheme.title,
       ),
     );

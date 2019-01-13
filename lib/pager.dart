@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/end.dart';
 import 'package:flutter_app/pages/filip.dart';
 import 'package:flutter_app/pages/flare_info.dart';
 import 'package:flutter_app/pages/flare_logo.dart';
+import 'package:flutter_app/pages/focused_text.dart';
 import 'package:flutter_app/pages/groke.dart';
+import 'package:flutter_app/pages/magic_behind.dart';
 import 'package:flutter_app/pages/summary.dart';
 import 'package:flutter_app/slide.dart';
 
@@ -17,9 +18,11 @@ class Pager extends StatelessWidget {
       const FlareLogo(),
       const FlareInfo(),
       const Filip(),
+      const MagicBehindFilip(),
+      const FocusedText(text: 'Confession'),
       const Groke(),
       const Summary(),
-      const End(),
+      const FocusedText(text: 'Questions?'),
     ];
 
     return PageView(

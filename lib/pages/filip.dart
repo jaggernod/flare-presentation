@@ -31,8 +31,6 @@ class Filip extends StatelessWidget {
         Expanded(
           child: FlareActor(
             'assets/Filip.flr',
-            alignment: Alignment.center,
-            fit: BoxFit.contain,
             animation: 'idle',
           ),
         ),

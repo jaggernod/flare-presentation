@@ -6,9 +6,7 @@ class Summary extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  SummaryState createState() {
-    return new SummaryState();
-  }
+  SummaryState createState() => SummaryState();
 }
 
 class SummaryState extends State<Summary> {
@@ -101,7 +99,7 @@ class _ProgressIndicator extends StatefulWidget {
   final PageController controller;
 
   @override
-  _ProgressIndicatorState createState() => new _ProgressIndicatorState();
+  _ProgressIndicatorState createState() => _ProgressIndicatorState();
 }
 
 class _ProgressIndicatorState extends State<_ProgressIndicator> {
@@ -119,8 +117,9 @@ class _ProgressIndicatorState extends State<_ProgressIndicator> {
       if (!mounted) {
         return;
       }
-      _pagePosition = widget.controller.page;
-      setState(() {});
+      setState(() {
+        _pagePosition = widget.controller.page;
+      });
     };
 
     widget.controller.addListener(listener);
