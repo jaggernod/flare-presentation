@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/summary/bad.dart';
+import 'package:flutter_app/pages/summary/good.dart';
+import 'package:flutter_app/pages/summary/ugly.dart';
 
 class Summary extends StatefulWidget {
   const Summary({
@@ -36,22 +39,12 @@ class SummaryState extends State<Summary> {
             controller: _controller,
             scrollDirection: Axis.vertical,
             children: <Widget>[
-              FlutterLogo(),
-              FlutterLogo(),
+              Good(),
+              Bad(),
               Center(
                 child: Padding(
                   padding: const EdgeInsets.all(48.0),
-                  child: LayoutBuilder(
-                    builder: (context, constraints) => ClipRRect(
-                          borderRadius: BorderRadius.circular(
-                            constraints.biggest.longestSide,
-                          ),
-                          child: Image.asset(
-                            'assets/tomek.jpg',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                  ),
+                  child: Ugly(),
                 ),
               )
             ],
