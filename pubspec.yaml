@@ -23,6 +23,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   pedantic: ^1.4.0
   qr_flutter: ^1.1.5
+  cached_network_image: ^0.5.1
 
 dev_dependencies:
   flutter_test:
