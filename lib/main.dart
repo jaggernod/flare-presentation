@@ -20,7 +20,7 @@ class PresentationApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Presentation',
+      title: 'Flare Presentation',
       home: Material(child: const Presentation()),
     );
   }
