@@ -1,13 +1,60 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
-class Good extends StatelessWidget {
+const List<Widget> traits = const [
+  Amazing(),
+  PureFlutter(),
+];
+
+class Good extends StatefulWidget {
+  const Good({Key key}) : super(key: key);
+
+  @override
+  GoodState createState() => GoodState();
+}
+
+class GoodState extends State<Good> {
+  int index = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkResponse(
+      onDoubleTap: () => setState(() => index = (index + 1) % traits.length),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'The Good',
+            style: Theme.of(context).primaryTextTheme.title,
+          ),
+          Expanded(
+            child: Center(
+              child: AnimatedSwitcher(
+                duration: Duration(milliseconds: 500),
+                child: traits[index],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Amazing extends StatelessWidget {
+  const Amazing({
+    Key key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          "It's amasing",
+          "It's amasing!",
           style: Theme.of(context).primaryTextTheme.subhead,
         ),
         SizedBox(
@@ -20,6 +67,27 @@ class Good extends StatelessWidget {
             animation: 'Idle',
           ),
         )
+      ],
+    );
+  }
+}
+
+class PureFlutter extends StatelessWidget {
+  const PureFlutter({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          'Pure Flutter!',
+          style: Theme.of(context).primaryTextTheme.subhead,
+        ),
+        FlutterLogo(size: 72),
       ],
     );
   }

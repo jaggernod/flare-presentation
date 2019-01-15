@@ -3,16 +3,22 @@ import 'package:flutter_app/pages/summary/bad.dart';
 import 'package:flutter_app/pages/summary/good.dart';
 import 'package:flutter_app/pages/summary/ugly.dart';
 
+const List<Widget> _traits = const [
+  Good(),
+  Bad(),
+  Ugly(),
+];
+
 class Summary extends StatefulWidget {
   const Summary({
     Key key,
   }) : super(key: key);
 
   @override
-  SummaryState createState() => SummaryState();
+  _SummaryState createState() => _SummaryState();
 }
 
-class SummaryState extends State<Summary> {
+class _SummaryState extends State<Summary> {
   PageController _controller;
 
   @override
@@ -38,16 +44,7 @@ class SummaryState extends State<Summary> {
             pageSnapping: true,
             controller: _controller,
             scrollDirection: Axis.vertical,
-            children: <Widget>[
-              Good(),
-              Bad(),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(48.0),
-                  child: Ugly(),
-                ),
-              )
-            ],
+            children: _traits.map((trait) => _Trait(child: trait)).toList(),
           ),
         ),
       ],
@@ -59,6 +56,26 @@ class SummaryState extends State<Summary> {
     _controller.dispose();
 
     super.dispose();
+  }
+}
+
+class _Trait extends StatelessWidget {
+  const _Trait({
+    Key key,
+    @required this.child,
+  })  : assert(child != null),
+        super(key: key);
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(48.0),
+        child: child,
+      ),
+    );
   }
 }
 
