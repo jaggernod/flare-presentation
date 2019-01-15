@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/credits.dart';
 import 'package:flutter_app/pages/filip.dart';
 import 'package:flutter_app/pages/flare_info.dart';
 import 'package:flutter_app/pages/flare_logo.dart';
@@ -20,6 +21,7 @@ class Pager extends StatelessWidget {
       const FocusedText(text: 'Confession'),
       const Groke(),
       const Summary(),
+      const Credits(),
       const FocusedText(text: 'Questions?'),
       // TODO Tools used, credits, shameless plug, screenshots of Flare Designer
     ];
