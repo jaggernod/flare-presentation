@@ -21,36 +21,22 @@ class PresentationApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flare Presentation',
-      home: Material(child: const Presentation()),
-    );
-  }
-}
-
-class Presentation extends StatelessWidget {
-  const Presentation({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final queryData = MediaQuery.of(context);
-    double devicePixelRatio = queryData.devicePixelRatio;
-
-    return Theme(
-      data: Theme.of(context).copyWith(
+      theme: ThemeData(
         primaryTextTheme: TextTheme(
           title: TextStyle(
-            color: Colors.white,
-            fontSize: 100.0 / devicePixelRatio,
+            fontSize: 32.0,
           ),
           caption: TextStyle(
-            fontSize: 70.0 / devicePixelRatio,
+            fontSize: 24.0,
             fontStyle: FontStyle.italic,
           ),
           subhead: TextStyle(
-            fontSize: 70.0 / devicePixelRatio,
+            fontSize: 24.0,
           ),
         ),
+        fontFamily: 'Roboto',
       ),
-      child: Pager(),
+      home: Material(child: const Pager()),
     );
   }
 }
