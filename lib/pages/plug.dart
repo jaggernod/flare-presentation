@@ -16,13 +16,7 @@ class Plug extends StatelessWidget {
       fit: StackFit.expand,
       children: <Widget>[
         Row(
-          children: _images
-              .map((url) => CachedNetworkImage(
-                    imageUrl: url,
-                    placeholder: CircularProgressIndicator(),
-                    errorWidget: Icon(Icons.error),
-                  ))
-              .toList(),
+          children: _images.map((url) => Image.network(url)).toList(),
         ),
         Align(
           alignment: Alignment.bottomRight,
