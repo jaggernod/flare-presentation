@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/pager.dart';
 
+const double fontScaleFactor = 1.5;
+
 void main() {
   debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
 
@@ -24,14 +26,14 @@ class PresentationApp extends StatelessWidget {
       theme: ThemeData(
         primaryTextTheme: TextTheme(
           title: TextStyle(
-            fontSize: 32.0,
+            fontSize: 32.0 * fontScaleFactor,
           ),
           caption: TextStyle(
-            fontSize: 24.0,
+            fontSize: 24.0 * fontScaleFactor,
             fontStyle: FontStyle.italic,
           ),
           subhead: TextStyle(
-            fontSize: 24.0,
+            fontSize: 24.0 * fontScaleFactor,
           ),
         ),
         fontFamily: 'Roboto',
