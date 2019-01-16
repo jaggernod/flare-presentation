@@ -7,8 +7,8 @@ const List<Widget> _badTraits = const [
     key: Key('Needs optimising'),
   ),
   SmallFocusedText(
-    text: 'Docummentation needs polishing',
-    key: Key('Docummentation needs polishing'),
+    text: 'Documentation needs polishing',
+    key: Key('Documentation needs polishing'),
   ),
   SmallFocusedText(
     text: 'The Web Tool needs love',
