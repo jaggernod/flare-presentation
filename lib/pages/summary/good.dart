@@ -60,8 +60,8 @@ class Amazing extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
-            width: 72,
-            height: 72,
+            width: 88,
+            height: 88,
             child: FlareActor(
               'assets/meteor.flr',
               alignment: Alignment.center,
@@ -90,7 +90,7 @@ class PureFlutter extends StatelessWidget {
           'Pure Flutter!',
           style: Theme.of(context).primaryTextTheme.title,
         ),
-        FlutterLogo(size: 72),
+        FlutterLogo(size: 88),
       ],
     );
   }

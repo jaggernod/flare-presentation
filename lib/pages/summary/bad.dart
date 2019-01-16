@@ -104,8 +104,8 @@ class AmeliaCheat extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
-            width: 72,
-            height: 72,
+            width: 88,
+            height: 88,
             child: FlareActor(
               'assets/Amelia Earhart_v2.flr',
               animation: 'Untitled',

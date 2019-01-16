@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/pager.dart';
 
@@ -10,6 +11,7 @@ double fontScaleFactor = 1.0;
 void main() {
   if (!Platform.isAndroid) {
     debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
+    debugRepaintRainbowEnabled = false;
     fontScaleFactor = 1.5;
   }
 

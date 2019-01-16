@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 const _images = [
-  'https://lh3.googleusercontent.com/0-s--NnwAcjWeVNeurBU6_lw_vL3U_iGmyhchKHncq7g06cC87GUmnn-a_pSA0u5x-5B=w3200-h1576-rw',
-  'https://lh3.googleusercontent.com/K3tjDN1bAdj4A8pXbe9JMSi_M4aqlw5vm_RKbcybDYuMIafcN6b61m9-5ky4S53Ynvg=w3200-h1576-rw',
+  'assets/screenshot1.webp',
+  'assets/screenshot2.webp',
 ];
 
 class Plug extends StatelessWidget {
@@ -18,7 +18,7 @@ class Plug extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: List.of(_images.map((url) => Image.network(url)).toList())
+          children: List.of(_images.map((it) => Image.asset(it)).toList())
             ..add(Expanded(
               child: Center(
                 child: Padding(
