@@ -23,7 +23,7 @@ class FilipState extends State<Filip> {
     return Padding(
       padding: const EdgeInsets.all(24.0),
       child: InkWell(
-        onTap: () {
+        onDoubleTap: () {
           setState(() {
             onStage.add(OnStage.values[onStage.length % OnStage.values.length]);
           });

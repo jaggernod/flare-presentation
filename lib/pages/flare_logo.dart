@@ -21,7 +21,7 @@ class FlareLogoState extends State<FlareLogo> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onLongPress: () => setState(() => _isPaused = !_isPaused),
+      onDoubleTap: () => setState(() => _isPaused = !_isPaused),
       child: FlareActor(
         'assets/flare_logo.flr',
         alignment: Alignment.center,
