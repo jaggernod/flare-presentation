@@ -1,3 +1,4 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
 const List<Widget> _badTraits = const [
@@ -17,10 +18,7 @@ const List<Widget> _badTraits = const [
     text: 'The Web Tool needs love',
     key: Key('The Web Tool needs love'),
   ),
-  SmallFocusedText(
-    text: 'API is not yet complete',
-    key: Key('API is not yet complete'),
-  ),
+  AmeliaCheat(),
 ];
 
 class Bad extends StatefulWidget {
@@ -81,7 +79,42 @@ class SmallFocusedText extends StatelessWidget {
     return Text(
       text,
       textAlign: TextAlign.center,
-      style: Theme.of(context).primaryTextTheme.subhead,
+      style: Theme.of(context).primaryTextTheme.title,
+    );
+  }
+}
+
+class AmeliaCheat extends StatelessWidget {
+  const AmeliaCheat({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          'API is not yet complete',
+          textAlign: TextAlign.center,
+          style: Theme.of(context).primaryTextTheme.title,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            width: 72,
+            height: 72,
+            child: FlareActor(
+              'assets/Amelia Earhart_v2.flr',
+              animation: 'Untitled',
+              alignment: Alignment.center,
+              fit: BoxFit.contain,
+            ),
+          ),
+        )
+      ],
     );
   }
 }

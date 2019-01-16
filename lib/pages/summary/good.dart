@@ -54,17 +54,20 @@ class Amazing extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          "It's amasing!",
-          style: Theme.of(context).primaryTextTheme.subhead,
+          "It's amazing!",
+          style: Theme.of(context).primaryTextTheme.title,
         ),
-        SizedBox(
-          width: 72,
-          height: 72,
-          child: FlareActor(
-            'assets/meteor.flr',
-            alignment: Alignment.center,
-            fit: BoxFit.contain,
-            animation: 'Idle',
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            width: 72,
+            height: 72,
+            child: FlareActor(
+              'assets/meteor.flr',
+              alignment: Alignment.center,
+              fit: BoxFit.contain,
+              animation: 'Idle',
+            ),
           ),
         )
       ],
@@ -85,7 +88,7 @@ class PureFlutter extends StatelessWidget {
       children: <Widget>[
         Text(
           'Pure Flutter!',
-          style: Theme.of(context).primaryTextTheme.subhead,
+          style: Theme.of(context).primaryTextTheme.title,
         ),
         FlutterLogo(size: 72),
       ],
