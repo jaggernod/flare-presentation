@@ -1,6 +1,8 @@
+import 'package:flare_dart/animation/actor_animation.dart';
+import 'package:flare_dart/math/mat2d.dart';
 import 'package:flare_flutter/flare.dart';
-import 'package:flare_flutter/flare/math/mat2d.dart';
 import 'package:flare_flutter/flare_actor.dart';
+import 'package:flare_flutter/flare_controller.dart';
 import 'package:flutter/material.dart';
 
 class Groke extends StatefulWidget {
