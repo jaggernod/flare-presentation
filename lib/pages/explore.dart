@@ -20,7 +20,12 @@ class Explore extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Center(child: Image.asset('assets/explore.png')),
+              child: Center(
+                child: Material(
+                  elevation: 8,
+                  child: Image.asset('assets/explore.png'),
+                ),
+              ),
             ),
           ),
           Align(
