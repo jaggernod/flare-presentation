@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/summary/bad.dart';
 
 class Ugly extends StatelessWidget {
   const Ugly({Key key}) : super(key: key);
@@ -15,18 +16,8 @@ class Ugly extends StatelessWidget {
         ),
         Expanded(
           child: Center(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return ClipRRect(
-                  borderRadius: BorderRadius.circular(
-                    constraints.biggest.longestSide,
-                  ),
-                  child: Image.asset(
-                    'assets/tomek.jpg',
-                    fit: BoxFit.cover,
-                  ),
-                );
-              },
+            child: SmallFocusedText(
+              text: 'N/A',
             ),
           ),
         ),

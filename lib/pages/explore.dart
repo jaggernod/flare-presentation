@@ -8,7 +8,7 @@ class Explore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(48.0),
+      padding: EdgeInsets.all(48),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,7 +19,7 @@ class Explore extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(16),
               child: Center(
                 child: Material(
                   elevation: 8,
