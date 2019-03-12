@@ -41,6 +41,9 @@ class PresentationApp extends StatelessWidget {
           subhead: TextStyle(
             fontSize: 24.0 * fontScaleFactor,
           ),
+          button: TextStyle(
+            fontSize: 16.0 * fontScaleFactor,
+          ),
         ),
         fontFamily: 'Roboto',
       ),

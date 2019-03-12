@@ -64,47 +64,7 @@ class _TeddyState extends State<Teddy> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 32, vertical: 24),
-                        child: Form(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              TrackingTextInput(
-                                label: 'Email',
-                                hint: "What's your email address?",
-                                onCaretMoved: _teddyController.lookAt,
-                                textVisibilityChanged:
-                                    _teddyController.coverEyes,
-                              ),
-                              TrackingTextInput(
-                                label: 'Password',
-                                hint: "Try 'bears'...",
-                                isObscured: true,
-                                onCaretMoved: (Offset caret) {
-                                  _teddyController.lookAt(caret);
-                                },
-                                onTextChanged: (value) =>
-                                    _teddyController.password = value,
-                                textVisibilityChanged: (visible) {
-                                  _teddyController.coverEyes(visible);
-                                  if (!visible) {
-                                    _teddyController.lookAt(null);
-                                  }
-                                },
-                              ),
-                              SigninButton(
-                                child: Text(
-                                  'Sign In',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                onPressed: _teddyController.submitPassword,
-                              )
-                            ],
-                          ),
-                        ),
+                        child: _buildForm(),
                       ),
                     )),
               ],
@@ -112,6 +72,43 @@ class _TeddyState extends State<Teddy> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildForm() {
+    return Form(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          TrackingTextInput(
+            label: 'Email',
+            hint: "What's your email address?",
+            onCaretMoved: _teddyController.lookAt,
+            textVisibilityChanged: _teddyController.coverEyes,
+          ),
+          TrackingTextInput(
+            label: 'Password',
+            hint: "Try 'bears'...",
+            isObscured: true,
+            onCaretMoved: _teddyController.lookAt,
+            onTextChanged: (value) => _teddyController.password = value,
+            textVisibilityChanged: (visible) {
+              _teddyController.coverEyes(visible);
+              if (!visible) {
+                _teddyController.lookAt(null);
+              }
+            },
+          ),
+          SigninButton(
+            child: Text(
+              'Sign In',
+              style: Theme.of(context).primaryTextTheme.button,
+            ),
+            onPressed: _teddyController.submitPassword,
+          )
+        ],
+      ),
     );
   }
 }

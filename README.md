@@ -2,14 +2,6 @@
 
 The project's purpose is to share some experience with [Flare by 2D](https://www.2dimensions.com/about-flare)
 
-## Setup
-
-As the project uses submodules you need to clone it recursively.
-
-```
-git clone <THIS_PROJECT> --recursive
-```
-
 ## Getting Started with Flutter
 
 This project is a starting point for a Flutter application.
@@ -24,7 +16,7 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 ## Credits
- - [Amelia Earhart_v2.flr](https://www.2dimensions.com/a/JuanCarlos/files/flare/amelia-earhart_v2)
+ - [Teddy.flr](https://github.com/2d-inc/Flare-Flutter/tree/master/example/teddy)
  - [Filip.flr](https://www.2dimensions.com/a/JuanCarlos/files/flare/filip)
  - [flare_logo.flr](https://www.2dimensions.com/a/sheikhsoft/files/flare/video-share)
  - [meteor.flr](https://www.2dimensions.com/a/pollux/files/flare/meteor)
