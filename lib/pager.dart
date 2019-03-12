@@ -9,6 +9,7 @@ import 'package:flutter_app/pages/focused_text.dart';
 import 'package:flutter_app/pages/groke.dart';
 import 'package:flutter_app/pages/plug.dart';
 import 'package:flutter_app/pages/summary/summary.dart';
+import 'package:flutter_app/pages/teddy/teddy.dart';
 import 'package:flutter_app/pages/web_tool.dart';
 import 'package:flutter_app/slide.dart';
 
@@ -24,6 +25,7 @@ class Pager extends StatelessWidget {
       const FocusedText(text: 'Confession'),
       const Groke(),
       const WebTool(),
+      const Teddy(),
       const Explore(),
       const Summary(),
       const Plug(),
