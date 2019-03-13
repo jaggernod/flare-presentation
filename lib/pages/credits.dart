@@ -12,7 +12,7 @@ class Credits extends StatelessWidget {
       padding: EdgeInsets.all(48.0),
       child: Center(
         child: QrImage(
-          data: 'https://github.com/jaggernod/flutter-desktop-embedding',
+          data: 'https://github.com/jaggernod/flare-presentation',
           backgroundColor: Colors.white,
         ),
       ),
