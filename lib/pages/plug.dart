@@ -4,6 +4,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 const _images = [
   'assets/screenshot1.webp',
   'assets/screenshot2.webp',
+  'assets/screenshot3.webp',
 ];
 
 class Plug extends StatelessWidget {
@@ -15,33 +16,35 @@ class Plug extends StatelessWidget {
       fit: StackFit.expand,
       children: <Widget>[
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: List.of(_images.map((it) => Image.asset(it)).toList())
-            ..add(Expanded(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'earli',
-                        style: Theme.of(context).primaryTextTheme.subhead,
-                      ),
-                      QrImage(
-                        data:
-                            'https://play.google.com/store/apps/details?id=de.axelspringer.yapa',
-                        backgroundColor: Colors.white,
-                      ),
-                    ],
+            ..add(
+              Expanded(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'earli',
+                          style: Theme.of(context).primaryTextTheme.subhead,
+                        ),
+                        QrImage(
+                          data:
+                              'https://play.google.com/store/apps/details?id=de.axelspringer.yapa',
+                          backgroundColor: Colors.white,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            )),
+            ),
         ),
         Align(
           alignment: Alignment.bottomRight,
@@ -49,8 +52,8 @@ class Plug extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: Image.asset(
               'assets/upday_app-icon_digital_blue.png',
-              height: 24,
-              width: 24,
+              height: 48,
+              width: 48,
             ),
           ),
         ),
