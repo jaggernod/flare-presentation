@@ -14,7 +14,7 @@ class Explore extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'The Playground',
+            'The Repository',
             style: Theme.of(context).primaryTextTheme.title,
           ),
           Expanded(

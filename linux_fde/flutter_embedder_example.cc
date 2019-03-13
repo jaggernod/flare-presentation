@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
       icu_data_path);
 
   // Start the engine.
-  if (!flutter_controller.CreateWindow(640, 480, assets_path, arguments)) {
+  if (!flutter_controller.CreateWindow(1024, 768, assets_path, arguments)) {
     return EXIT_FAILURE;
   }
 
