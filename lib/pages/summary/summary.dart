@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/summary/bad.dart';
 import 'package:flutter_app/pages/summary/good.dart';
@@ -79,6 +81,8 @@ class _Trait extends StatelessWidget {
   }
 }
 
+const _indicatorSize = 48.0;
+
 class _Indicator extends StatelessWidget {
   const _Indicator({
     Key key,
@@ -87,8 +91,8 @@ class _Indicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 48.0,
-      height: 48.0,
+      width: _indicatorSize,
+      height: _indicatorSize,
       decoration: const BoxDecoration(
         shape: BoxShape.circle,
         color: Colors.blueGrey,
@@ -156,13 +160,17 @@ class _ProgressIndicatorState extends State<_ProgressIndicator> {
             mainAxisSize: MainAxisSize.min,
             children: indicators),
         Positioned(
-          top: _pagePosition * 48.0 * 2,
+          top: _pagePosition * _indicatorSize * 2,
           child: Container(
-            width: 48.0,
-            height: 48.0,
+            width: _indicatorSize,
+            height: _indicatorSize,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Theme.of(context).accentColor,
+              color: Color(0xFF00419E),
+            ),
+            child: Transform.rotate(
+              angle: pi * _pagePosition,
+              child: Image.asset('assets/sun-small.png'),
             ),
           ),
         ),
@@ -176,7 +184,7 @@ class _ProgressIndicatorState extends State<_ProgressIndicator> {
     for (int i = 0; i < count; ++i) {
       indicators.add(const _Indicator());
       if (i + 1 != count) {
-        indicators.add(const SizedBox(height: 48));
+        indicators.add(const SizedBox(height: _indicatorSize));
       }
     }
     return indicators;

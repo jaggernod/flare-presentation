@@ -23,55 +23,42 @@ class _TeddyState extends State<Teddy> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.fromLTRB(48, 48, 0, 0),
-          child: Text(
-            'Meet Teddy',
-            style: Theme.of(context).primaryTextTheme.title,
-          ),
+    return Center(
+      child: SingleChildScrollView(
+        padding: EdgeInsets.all(24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Container(
+                height: MediaQuery.of(context).size.height / 3,
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: FlareActor(
+                  'assets/Teddy.flr',
+                  shouldClip: false,
+                  alignment: Alignment.bottomCenter,
+                  fit: BoxFit.contain,
+                  controller: _teddyController,
+                )),
+            Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(25),
+                  ),
+                ),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                      maxWidth: 600 * MediaQuery.of(context).devicePixelRatio),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 32, vertical: 24),
+                    child: _buildForm(),
+                  ),
+                )),
+          ],
         ),
-        Expanded(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.all(24),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                    height: 300,
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: FlareActor(
-                      'assets/Teddy.flr',
-                      shouldClip: false,
-                      alignment: Alignment.bottomCenter,
-                      fit: BoxFit.contain,
-                      controller: _teddyController,
-                    )),
-                Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(25),
-                      ),
-                    ),
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(maxWidth: 600),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 32, vertical: 24),
-                        child: _buildForm(),
-                      ),
-                    )),
-              ],
-            ),
-          ),
-        ),
-      ],
+      ),
     );
   }
 
