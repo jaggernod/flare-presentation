@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SigninButton extends StatelessWidget {
-  final Widget child;
-  final Gradient gradient;
-  final double width;
-  final double height;
-  final Function onPressed;
-
   const SigninButton({
     Key key,
     @required this.child,
@@ -15,6 +9,12 @@ class SigninButton extends StatelessWidget {
     this.height = 50.0,
     this.onPressed,
   }) : super(key: key);
+  
+  final Widget child;
+  final Gradient gradient;
+  final double width;
+  final double height;
+  final Function onPressed;
 
   @override
   Widget build(BuildContext context) {
