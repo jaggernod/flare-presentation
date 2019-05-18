@@ -37,5 +37,9 @@ Offset getCaretPosition(RenderBox box) {
     renderEditable.getEndpointsForSelection(renderEditable.selection),
     renderEditable,
   );
-  return endpoints[0].point + const Offset(0.0, -2.0);
+
+  final editablePosition = renderEditable.localToGlobal(Offset.zero);
+  return endpoints[0].point +
+      const Offset(0.0, -2.0) -
+      Offset(editablePosition.dx, 0);
 }

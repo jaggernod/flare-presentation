@@ -27,18 +27,20 @@ class _TeddyState extends State<Teddy> {
       child: SingleChildScrollView(
         padding: EdgeInsets.all(24),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-                height: MediaQuery.of(context).size.height / 3,
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: FlareActor(
-                  'assets/Teddy.flr',
-                  shouldClip: false,
-                  alignment: Alignment.bottomCenter,
-                  fit: BoxFit.contain,
-                  controller: _teddyController,
+                height: MediaQuery.of(context).size.height / 4,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: 600),
+                  child: FlareActor(
+                    'assets/Teddy.flr',
+                    shouldClip: false,
+                    alignment: Alignment.bottomCenter,
+                    fit: BoxFit.contain,
+                    controller: _teddyController,
+                  ),
                 )),
             Container(
                 decoration: BoxDecoration(
@@ -48,8 +50,7 @@ class _TeddyState extends State<Teddy> {
                   ),
                 ),
                 child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                      maxWidth: 600 * MediaQuery.of(context).devicePixelRatio),
+                  constraints: BoxConstraints(maxWidth: 600),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 32, vertical: 24),
