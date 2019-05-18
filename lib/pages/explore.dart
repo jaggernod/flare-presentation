@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/widgets/presentation_border.dart';
 
 class Explore extends StatelessWidget {
   const Explore({
@@ -14,17 +15,15 @@ class Explore extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'The Repository',
+            'The Repo',
             style: Theme.of(context).primaryTextTheme.title,
           ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Center(
-                child: Material(
-                  elevation: 8,
-                  child: Image.asset('assets/explore.png'),
-                ),
+                child: PresentationBorder(
+                    child: Image.asset('assets/explore.png')),
               ),
             ),
           ),

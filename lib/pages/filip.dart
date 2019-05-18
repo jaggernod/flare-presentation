@@ -1,5 +1,6 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/widgets/presentation_border.dart';
 
 class Filip extends StatefulWidget {
   const Filip({Key key}) : super(key: key);
@@ -55,8 +56,7 @@ class FilipState extends State<Filip> {
                     duration: Duration(milliseconds: 500),
                     opacity: onStage.contains(OnStage.code) ? 0.95 : 0,
                     child: Center(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
+                      child: PresentationBorder(
                         child: Image.asset('assets/filip_code.png'),
                       ),
                     ),
@@ -65,8 +65,7 @@ class FilipState extends State<Filip> {
                     duration: Duration(milliseconds: 500),
                     opacity: onStage.contains(OnStage.data) ? 1 : 0,
                     child: Center(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
+                      child: PresentationBorder(
                         child: Image.asset('assets/filip_data.png'),
                       ),
                     ),

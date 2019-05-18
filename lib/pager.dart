@@ -32,13 +32,6 @@ class _PagerState extends State<Pager> {
   }
 
   @override
-  void dispose() {
-    _presentationController.dispose();
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final content = [
       const FlareLogo(),
@@ -59,5 +52,12 @@ class _PagerState extends State<Pager> {
       presentationController: _presentationController,
       children: content.map((item) => Slide(child: item)).toList(),
     );
+  }
+
+  @override
+  void dispose() {
+    _presentationController.dispose();
+    _controller.dispose();
+    super.dispose();
   }
 }

@@ -170,7 +170,9 @@ class _ProgressIndicatorState extends State<_ProgressIndicator> {
             ),
             child: Transform.rotate(
               angle: pi * _pagePosition,
-              child: Image.asset('assets/sun-small.png'),
+              child: FlutterLogo(
+                size: 36,
+              ),
             ),
           ),
         ),

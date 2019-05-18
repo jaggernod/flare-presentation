@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/widgets/presentation_border.dart';
 
 class WebTool extends StatelessWidget {
   const WebTool({
@@ -21,8 +22,7 @@ class WebTool extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Center(
-                child: Material(
-                  elevation: 8,
+                child: PresentationBorder(
                   child: Image.asset('assets/web_tool.png'),
                 ),
               ),
