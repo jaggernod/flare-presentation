@@ -14,7 +14,7 @@ class Groke extends StatefulWidget {
 
 enum Mood { scare, smile }
 
-class _GrokeState extends State<Groke> implements FlareController {
+class _GrokeState extends State<Groke> with FlareController {
   final double _speed = 2.0;
   double _scareFactorAmount = 0.1;
   double _scareTime = 0.0;
@@ -92,9 +92,6 @@ class _GrokeState extends State<Groke> implements FlareController {
 
   @override
   void setViewTransform(Mat2D viewTransform) {}
-
-  @override
-  ValueNotifier<bool> isActive;
 }
 
 class RubDetector extends StatefulWidget {
