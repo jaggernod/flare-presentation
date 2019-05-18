@@ -34,6 +34,7 @@ class PresentationApp extends StatelessWidget {
         primaryTextTheme: TextTheme(
           title: TextStyle(
             fontSize: 32.0 * fontScaleFactor,
+            fontWeight: FontWeight.bold,
           ),
           caption: TextStyle(
             fontSize: 24.0 * fontScaleFactor,

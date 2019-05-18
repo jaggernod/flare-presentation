@@ -166,7 +166,7 @@ class _ProgressIndicatorState extends State<_ProgressIndicator> {
             height: _indicatorSize,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Color(0xFF00419E),
+              color: Color(0xFF00419E).withOpacity(0.7),
             ),
             child: Transform.rotate(
               angle: pi * _pagePosition,
