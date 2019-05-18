@@ -7,7 +7,6 @@ import 'package:flutter_app/pages/flare_info.dart';
 import 'package:flutter_app/pages/flare_logo.dart';
 import 'package:flutter_app/pages/focused_text.dart';
 import 'package:flutter_app/pages/groke.dart';
-import 'package:flutter_app/pages/plug.dart';
 import 'package:flutter_app/pages/summary/summary.dart';
 import 'package:flutter_app/pages/teddy/teddy.dart';
 import 'package:flutter_app/pages/web_tool.dart';
@@ -28,10 +27,8 @@ class Pager extends StatelessWidget {
       const Teddy(),
       const Explore(),
       const Summary(),
-      const Plug(),
       const Credits(),
       const FocusedText(text: 'Questions?'),
-      // TODO Tools used, credits, shameless plug, screenshots of Flare Designer
     ];
 
     return PageView(
