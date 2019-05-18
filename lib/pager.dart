@@ -11,9 +11,32 @@ import 'package:flutter_app/pages/summary/summary.dart';
 import 'package:flutter_app/pages/teddy/teddy.dart';
 import 'package:flutter_app/pages/web_tool.dart';
 import 'package:flutter_app/slide.dart';
+import 'package:presentation/presentation.dart';
 
-class Pager extends StatelessWidget {
+class Pager extends StatefulWidget {
   const Pager({Key key}) : super(key: key);
+
+  @override
+  _PagerState createState() => _PagerState();
+}
+
+class _PagerState extends State<Pager> {
+  PageController _controller;
+  PresentationController _presentationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = PageController();
+    _presentationController = PresentationController(controller: _controller);
+  }
+
+  @override
+  void dispose() {
+    _presentationController.dispose();
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +54,9 @@ class Pager extends StatelessWidget {
       const FocusedText(text: 'Questions?'),
     ];
 
-    return PageView(
+    return Presentation(
+      controller: _controller,
+      presentationController: _presentationController,
       children: content.map((item) => Slide(child: item)).toList(),
     );
   }

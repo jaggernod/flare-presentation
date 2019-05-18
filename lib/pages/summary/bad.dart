@@ -13,6 +13,7 @@ const List<Widget> _badTraits = const [
     text: 'The Web Tool needs love',
     key: Key('The Web Tool needs love'),
   ),
+  // Bad code doc
 ];
 
 class Bad extends StatefulWidget {
