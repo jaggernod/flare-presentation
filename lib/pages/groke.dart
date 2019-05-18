@@ -92,6 +92,9 @@ class _GrokeState extends State<Groke> implements FlareController {
 
   @override
   void setViewTransform(Mat2D viewTransform) {}
+
+  @override
+  ValueNotifier<bool> isActive;
 }
 
 class RubDetector extends StatefulWidget {
