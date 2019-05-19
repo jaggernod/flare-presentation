@@ -20,10 +20,10 @@ class FlareInfo extends StatelessWidget {
               children: <TextSpan>[
                 TextSpan(
                   text: 'Flare'.toUpperCase(),
-                  style: Theme.of(context)
-                      .primaryTextTheme
-                      .title
-                      .copyWith(letterSpacing: 5.0),
+                  style: Theme.of(context).primaryTextTheme.title.copyWith(
+                        letterSpacing: 5.0,
+                        fontWeight: FontWeight.normal,
+                      ),
                 ),
                 TextSpan(
                   text: '?',

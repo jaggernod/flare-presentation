@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 const List<Widget> _badTraits = const [
   SmallFocusedText(
-    text: 'Needs optimising',
-    key: Key('Needs optimising'),
+    text: 'Advance API is not stable',
+    key: Key('Advance API is not stable'),
   ),
   SmallFocusedText(
     text: 'Documentation needs polishing',
@@ -13,7 +13,6 @@ const List<Widget> _badTraits = const [
     text: 'The Web Tool needs love',
     key: Key('The Web Tool needs love'),
   ),
-  // Bad code doc
 ];
 
 class Bad extends StatefulWidget {

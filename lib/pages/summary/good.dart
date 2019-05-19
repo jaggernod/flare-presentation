@@ -1,9 +1,14 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/summary/bad.dart';
 
 const List<Widget> traits = const [
   Amazing(),
   PureFlutter(),
+  SmallFocusedText(
+    text: 'Nice blog',
+    key: Key('Nice blog'),
+  ),
 ];
 
 class Good extends StatefulWidget {

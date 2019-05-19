@@ -9,7 +9,7 @@ import 'package:flutter_app/pager.dart';
 double fontScaleFactor = 1.0;
 
 void main() {
-  if (!Platform.isAndroid) {
+  if (!Platform.isAndroid && !Platform.isIOS) {
     debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
     debugRepaintRainbowEnabled = false;
     fontScaleFactor = 1.5;
