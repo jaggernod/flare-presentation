@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+#include <flutter/flutter_window_controller.h>
 #include <linux/limits.h>
 #include <unistd.h>
 
@@ -19,7 +20,7 @@
 #include <memory>
 #include <vector>
 
-#include <flutter/flutter_window_controller.h>
+#include "flutter/generated_plugin_registrant.h"
 
 namespace {
 
@@ -56,19 +57,23 @@ int main(int argc, char **argv) {
 
   // Arguments for the Flutter Engine.
   std::vector<std::string> arguments;
-#ifdef NDEBUG
-  arguments.push_back("--disable-dart-asserts");
-#endif
 
   flutter::FlutterWindowController flutter_controller(icu_data_path);
+  flutter::WindowProperties window_properties = {};
+  window_properties.title = "Flare";
+  window_properties.width = 800;
+  window_properties.height = 600;
 
   // Start the engine.
-  if (!flutter_controller.CreateWindow(800, 600, "Flare Presentation",
-                                       assets_path, arguments)) {
+  if (!flutter_controller.CreateWindow(window_properties, assets_path,
+                                       arguments)) {
     return EXIT_FAILURE;
   }
+  RegisterPlugins(&flutter_controller);
 
   // Run until the window is closed.
-  flutter_controller.RunEventLoop();
+  while (flutter_controller.RunEventLoopWithTimeout(
+      std::chrono::milliseconds::max())) {
+  }
   return EXIT_SUCCESS;
 }

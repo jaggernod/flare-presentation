@@ -5,7 +5,7 @@ import 'package:flutter_app/pages/summary/bad.dart';
 import 'package:flutter_app/pages/summary/good.dart';
 import 'package:flutter_app/pages/summary/ugly.dart';
 
-const List<Widget> _traits = const [
+const List<Widget> _traits = [
   Good(),
   Bad(),
   Ugly(),

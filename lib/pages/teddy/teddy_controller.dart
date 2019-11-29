@@ -42,7 +42,7 @@ class TeddyController extends FlareControls {
 
       // To make it more interesting, we'll also add a sinusoidal vertical offset.
       _caretWorld[1] +=
-          sin(new DateTime.now().millisecondsSinceEpoch / 300.0) * 70.0;
+          sin(DateTime.now().millisecondsSinceEpoch / 300.0) * 70.0;
 
       // Compute direction vector.
       Vec2D toCaret = Vec2D.subtract(Vec2D(), _caretWorld, _faceOrigin);

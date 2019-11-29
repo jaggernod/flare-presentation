@@ -10,7 +10,7 @@ class Filip extends StatefulWidget {
 }
 
 class FilipState extends State<Filip> {
-  Set<OnStage> onStage = Set();
+  Set<OnStage> onStage = {};
 
   @override
   void initState() {

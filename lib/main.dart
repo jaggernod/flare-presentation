@@ -15,6 +15,8 @@ void main() {
     fontScaleFactor = 1.5;
   }
 
+  WidgetsFlutterBinding.ensureInitialized();
+
   SystemChrome.setEnabledSystemUIOverlays([]);
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const List<Widget> _badTraits = const [
+const List<Widget> _badTraits = [
   SmallFocusedText(
     text: 'Advance API is not stable',
     key: Key('Advance API is not stable'),
