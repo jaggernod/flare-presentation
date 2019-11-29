@@ -1,41 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/wave/wave_clipper.dart';
 
-class Slide extends StatelessWidget {
-  const Slide({
-    Key key,
-    @required this.child,
-    this.colors = const [Color(0xFF5C4297), Color(0xFF9988F1)],
-  }) : super(key: key);
+class WaveSlide extends StatefulWidget {
+  const WaveSlide({Key key, this.child}) : super(key: key);
 
   final Widget child;
 
-  final List<Color> colors;
-
   @override
-  Widget build(BuildContext context) {
-    return DemoPage();
-  }
+  _WaveSlideState createState() => _WaveSlideState();
 }
 
-class DemoPage extends StatefulWidget {
-  @override
-  _DemoPageState createState() => _DemoPageState();
-}
-
-class _DemoPageState extends State<DemoPage>
+class _WaveSlideState extends State<WaveSlide>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation<double> waveAnimation;
+
   @override
   void initState() {
     super.initState();
 
     _controller =
         AnimationController(duration: Duration(seconds: 2), vsync: this)
-          ..addListener(() {
-            setState(() {});
-          });
+          ..addListener(() => setState(() {}));
 
     waveAnimation = Tween(
       begin: 0.7,
@@ -54,117 +40,105 @@ class _DemoPageState extends State<DemoPage>
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 120),
+        widget.child,
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: CustomPaint(
+            painter: WavePainter(
+              enable: false,
+              toControlPoints: _lightControlPoints,
+              toEndPoints: _lightEndPoints,
+            ),
+            child: ClipPath(
+              clipper: WaveClipper(
+                weight: waveAnimation.value,
+                toControlPoints: _lightControlPoints,
+                toEndPoints: _lightEndPoints,
+              ),
+              child: Container(
+                color: Color(0xFFDBD4ED),
+                height: 175,
+                width: double.infinity,
+              ),
+            ),
+          ),
         ),
         Align(
           alignment: Alignment.bottomCenter,
           child: CustomPaint(
-            painter: WavePainter(enable: false),
+            painter: WavePainter(
+              enable: false,
+              toControlPoints: _darkControlPoints,
+              toEndPoints: _darkEndPoints,
+            ),
             child: ClipPath(
-              clipper: WaveClipper(weight: waveAnimation.value),
-              child: Opacity(
-                opacity: 0.4,
-                child: Container(
-                  color: Colors.deepPurple,
-                  height: 175,
-                  width: double.infinity,
+              clipper: WaveClipper(
+                weight: waveAnimation.value,
+                toControlPoints: _darkControlPoints,
+                toEndPoints: _darkEndPoints,
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: const [Color(0xFF5C4297), Color(0xFF9988F1)],
+                    stops: [0.2, 1.0],
+                  ),
                 ),
+                height: 180,
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
 }
-//
-//class DemoBody extends StatefulWidget {
-//  DemoBody(
-//      {Key key, @required this.size, this.xOffset, this.yOffset, this.color})
-//      : super(key: key);
-//
-//  final Size size;
-//  final int xOffset;
-//  final int yOffset;
-//  final Color color;
-//
-//  @override
-//  State<StatefulWidget> createState() {
-//    return _DemoBodyState();
-//  }
-//}
-//
-//class _DemoBodyState extends State<DemoBody> with TickerProviderStateMixin {
-//  AnimationController animationController;
-//  List<Offset> animList1 = [];
-//
-//  @override
-//  void initState() {
-//    super.initState();
-//
-//    animationController =
-//        AnimationController(vsync: this, duration: Duration(seconds: 2));
-//
-//    animationController.addListener(() {
-//      animList1.clear();
-//      for (int i = -2 - widget.xOffset;
-//          i <= widget.size.width.toInt() + 2;
-//          i++) {
-//        animList1.add(Offset(
-//            i.toDouble() + widget.xOffset,
-//            sin((animationController.value * 360 - i) %
-//                        360 *
-//                        Vector.degrees2Radians) *
-//                    20 +
-//                50 +
-//                widget.yOffset));
-//      }
-//    });
-//    animationController.repeat();
-//  }
-//
-//  @override
-//  void dispose() {
-//    animationController.dispose();
-//    super.dispose();
-//  }
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Container(
-//      alignment: Alignment.center,
-//      child: AnimatedBuilder(
-//        animation: CurvedAnimation(
-//          parent: animationController,
-//          curve: Curves.easeInOut,
-//        ),
-//        builder: (context, child) => ClipPath(
-//          child: widget.color == null
-//              ? Image.asset(
-//                  'images/demo5bg.jpg',
-//                  width: widget.size.width,
-//                  height: widget.size.height,
-//                  fit: BoxFit.cover,
-//                )
-//              : Container(
-//                  width: widget.size.width,
-//                  height: widget.size.height,
-//                  color: widget.color,
-//                ),
-//          clipper: WaveClipper(animationController.value, animList1),
-//        ),
-//      ),
-//    );
-//  }
-//}
 
-class UnifiedSlide extends StatelessWidget {
-  const UnifiedSlide({
+List<Offset> _lightControlPoints(Size size) => [
+      _fromRelative(size, 0.12, 0.0),
+      _fromRelative(size, 0.12, -0.06),
+      _fromRelative(size, 0.47, 0.9),
+      _fromRelative(size, 0.8, 0.5),
+    ];
+
+List<Offset> _lightEndPoints(Size size) => [
+      _fromRelative(size, 0, 0.4),
+      _fromRelative(size, 0.24, 0.3),
+      _fromRelative(size, 0.63, 0.7),
+      _fromRelative(size, 0.95, 1.0),
+    ];
+
+List<Offset> _darkControlPoints(Size size) => [
+      _fromRelative(size, 0.12, 0.1),
+      _fromRelative(size, 0.12, 0.1),
+      _fromRelative(size, 0.47, 1),
+      _fromRelative(size, 0.75, 0.7),
+    ];
+
+List<Offset> _darkEndPoints(Size size) => [
+      _fromRelative(size, 0, 0.5),
+      _fromRelative(size, 0.24, 0.4),
+      _fromRelative(size, 0.63, 0.8),
+      _fromRelative(size, 0.9, 1),
+    ];
+
+Offset _fromRelative(Size size, double dx, double dy) =>
+    Offset(dx * size.width, dy * size.height);
+
+class Slide extends StatelessWidget {
+  const Slide({
     Key key,
     @required this.child,
     this.colors = const [Color(0xFF5C4297), Color(0xFF9988F1)],

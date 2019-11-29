@@ -12,7 +12,10 @@ class FocusedText extends StatelessWidget {
     return Center(
       child: Text(
         text,
-        style: Theme.of(context).primaryTextTheme.title,
+        style: Theme.of(context)
+            .primaryTextTheme
+            .title
+            .copyWith(color: Color(0xFF7A61F7)),
       ),
     );
   }

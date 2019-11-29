@@ -2,10 +2,18 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+typedef ToOffsets = List<Offset> Function(Size);
+
 class WaveClipper extends CustomClipper<Path> {
-  WaveClipper({this.weight = 1});
+  WaveClipper(
+      {@required this.toControlPoints,
+      @required this.toEndPoints,
+      this.weight = 1,}) : assert(toControlPoints != null),
+        assert(toEndPoints != null);
 
   final double weight;
+  final ToOffsets toControlPoints;
+  final ToOffsets toEndPoints;
 
   @override
   Path getClip(Size size) => _backgroundPath(size);
@@ -17,57 +25,44 @@ class WaveClipper extends CustomClipper<Path> {
     ..relativeLineTo(0, size.height)
     ..lineTo(0, size.height)
     ..close();
-}
 
-Path _createWaveClipperPath(Size size, double weight) {
-  final endPoints = _endPoints(size);
-  final controlPoint = _controlPoints(size);
+  Path _createWaveClipperPath(Size size, double weight) {
+    final endPoints = toEndPoints(size);
+    final controlPoint = toControlPoints(size);
 
-  Path path = Path();
-  path.moveTo(endPoints[0].dx, endPoints[0].dy);
+    Path path = Path();
+    path.moveTo(endPoints[0].dx, endPoints[0].dy);
 
-  for (var i = 0; i < endPoints.length; i++) {
-    path.conicTo(
-      controlPoint[i].dx,
-      controlPoint[i].dy,
-      endPoints[i].dx,
-      endPoints[i].dy,
-      weight,
-    );
+    for (var i = 0; i < endPoints.length; i++) {
+      path.conicTo(
+        controlPoint[i].dx,
+        controlPoint[i].dy,
+        endPoints[i].dx,
+        endPoints[i].dy,
+        weight,
+      );
+    }
+
+    return path;
   }
-
-  return path;
 }
-
-List<Offset> _controlPoints(Size size) {
-  return [
-    _fromRelative(size, 0.12, 0.1),
-    _fromRelative(size, 0.12, 0.1),
-    _fromRelative(size, 0.47, 1),
-    _fromRelative(size, 0.75, 0.7),
-  ];
-}
-
-List<Offset> _endPoints(Size size) {
-  return [
-    _fromRelative(size, 0, 0.5),
-    _fromRelative(size, 0.24, 0.4),
-    _fromRelative(size, 0.63, 0.8),
-    _fromRelative(size, 0.9, 1),
-  ];
-}
-
-Offset _fromRelative(Size size, double dx, double dy) =>
-    Offset(dx * size.width, dy * size.height);
 
 class WavePainter extends CustomPainter {
-  WavePainter({this.enable = true})
-      : controlPaint = Paint()
+  WavePainter({
+    @required this.toControlPoints,
+    @required this.toEndPoints,
+    this.enable = true,
+  })  : assert(toControlPoints != null),
+        assert(toEndPoints != null),
+        controlPaint = Paint()
           ..color = Colors.red
           ..style = PaintingStyle.fill,
         endPaint = Paint()
           ..color = Colors.blue
           ..style = PaintingStyle.fill;
+
+  final ToOffsets toControlPoints;
+  final ToOffsets toEndPoints;
 
   final bool enable;
   final Paint controlPaint;
@@ -78,10 +73,10 @@ class WavePainter extends CustomPainter {
     if (!enable) {
       return;
     }
-    for (var control in _controlPoints(size)) {
+    for (var control in toControlPoints(size)) {
       canvas.drawCircle(control, 4, controlPaint);
     }
-    for (var endPoint in _endPoints(size)) {
+    for (var endPoint in toEndPoints(size)) {
       canvas.drawCircle(endPoint, 4, endPaint);
     }
   }

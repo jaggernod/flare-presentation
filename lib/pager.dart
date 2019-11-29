@@ -44,13 +44,15 @@ class _PagerState extends State<Pager> {
       const Explore(),
       const Summary(),
       const Credits(),
-      const FocusedText(text: 'Questions?'),
     ];
 
     return Presentation(
       controller: _controller,
       presentationController: _presentationController,
-      children: content.map((item) => Slide(child: item)).toList(),
+      children: [
+        ...content.map((item) => Slide(child: item)).toList(),
+        WaveSlide(child: const FocusedText(text: 'Questions?'))
+      ],
     );
   }
 
