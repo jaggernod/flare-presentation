@@ -23,7 +23,36 @@ class DemoPage extends StatefulWidget {
   _DemoPageState createState() => _DemoPageState();
 }
 
-class _DemoPageState extends State<DemoPage> {
+class _DemoPageState extends State<DemoPage>
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+  Animation<double> waveAnimation;
+  @override
+  void initState() {
+    super.initState();
+
+    _controller =
+        AnimationController(duration: Duration(seconds: 2), vsync: this)
+          ..addListener(() {
+            setState(() {});
+          });
+
+    waveAnimation = Tween(
+      begin: 0.7,
+      end: 1.2,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInCubic));
+
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _controller.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        _controller.forward();
+      }
+    });
+
+    _controller.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -35,9 +64,9 @@ class _DemoPageState extends State<DemoPage> {
         Align(
           alignment: Alignment.bottomCenter,
           child: CustomPaint(
-            painter: WavePainter(enable: true),
+            painter: WavePainter(enable: false),
             child: ClipPath(
-              clipper: WaveClipper(),
+              clipper: WaveClipper(weight: waveAnimation.value),
               child: Opacity(
                 opacity: 0.4,
                 child: Container(
