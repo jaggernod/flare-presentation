@@ -35,7 +35,7 @@ class _DemoPageState extends State<DemoPage> {
         Align(
           alignment: Alignment.bottomCenter,
           child: CustomPaint(
-            painter: WavePainter(enable: false),
+            painter: WavePainter(enable: true),
             child: ClipPath(
               clipper: WaveClipper(),
               child: Opacity(

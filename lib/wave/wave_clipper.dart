@@ -3,19 +3,23 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class WaveClipper extends CustomClipper<Path> {
+  WaveClipper({this.weight = 1});
+
+  final double weight;
+
   @override
   Path getClip(Size size) => _backgroundPath(size);
 
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => true;
 
-  Path _backgroundPath(Size size) => _createWaveClipperPath(size)
+  Path _backgroundPath(Size size) => _createWaveClipperPath(size, weight)
     ..relativeLineTo(0, size.height)
     ..lineTo(0, size.height)
     ..close();
 }
 
-Path _createWaveClipperPath(Size size) {
+Path _createWaveClipperPath(Size size, double weight) {
   final endPoints = _endPoints(size);
   final controlPoint = _controlPoints(size);
 
@@ -23,8 +27,13 @@ Path _createWaveClipperPath(Size size) {
   path.moveTo(endPoints[0].dx, endPoints[0].dy);
 
   for (var i = 0; i < endPoints.length; i++) {
-    path.quadraticBezierTo(controlPoint[i].dx, controlPoint[i].dy,
-        endPoints[i].dx, endPoints[i].dy);
+    path.conicTo(
+      controlPoint[i].dx,
+      controlPoint[i].dy,
+      endPoints[i].dx,
+      endPoints[i].dy,
+      weight,
+    );
   }
 
   return path;
