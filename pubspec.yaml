@@ -21,9 +21,9 @@ dependencies:
   cupertino_icons: ^0.1.2
   pedantic: ^1.4.0
   qr_flutter: ^2.0.0+51
-  flare_flutter: ^1.5.0
-  flare_dart: ^1.4.0
-  presentation: ^0.0.2
+  flare_flutter: ^1.7.3
+  flare_dart: ^2.2.5
+  presentation: ^0.0.9+1
 
 dev_dependencies:
   flutter_test:
