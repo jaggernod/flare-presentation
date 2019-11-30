@@ -51,7 +51,12 @@ class _PagerState extends State<Pager> {
       presentationController: _presentationController,
       children: [
         ...content.map((item) => Slide(child: item)).toList(),
-        WaveSlide(child: const FocusedText(text: 'Questions?'))
+        WaveSlide(
+          child: const FocusedText(
+            text: 'Questions?',
+            color: Color(0xFF7A61F7),
+          ),
+        )
       ],
     );
   }
