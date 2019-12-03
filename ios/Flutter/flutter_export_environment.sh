@@ -1,10 +1,10 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/home/jaggernod/work/tools/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/jaggernod/work/projects/flare_presentation"
+export "FLUTTER_ROOT=/home/jaggernod/work/tooling/flutter"
+export "FLUTTER_APPLICATION_PATH=/home/jaggernod/work/projects/sandbox/flare-presentation"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build/ios"
-export "FLUTTER_FRAMEWORK_DIR=/home/jaggernod/work/tools/flutter/bin/cache/artifacts/engine/ios"
+export "FLUTTER_FRAMEWORK_DIR=/home/jaggernod/work/tooling/flutter/bin/cache/artifacts/engine/ios"
 export "FLUTTER_BUILD_NAME=1.0.0"
 export "FLUTTER_BUILD_NUMBER=1"
