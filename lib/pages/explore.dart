@@ -23,7 +23,8 @@ class Explore extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               child: Center(
                 child: PresentationBorder(
-                    child: Image.asset('assets/explore.png')),
+                  child: Image.asset('assets/explore.png'),
+                ),
               ),
             ),
           ),
