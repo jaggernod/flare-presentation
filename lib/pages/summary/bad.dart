@@ -9,10 +9,6 @@ const List<Widget> _badTraits = [
     text: 'Documentation needs polishing',
     key: Key('Documentation needs polishing'),
   ),
-  SmallFocusedText(
-    text: 'The Web Tool needs love',
-    key: Key('The Web Tool needs love'),
-  ),
 ];
 
 class Bad extends StatefulWidget {
